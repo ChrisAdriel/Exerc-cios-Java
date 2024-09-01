@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Valores {
+    int valor;
+
+    Valores() {
+
+    }
+}
+
+public class SubstituicaoEmVetor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Integer> listaNumeros = new ArrayList<>();
+        List<Integer> novaListaNumeros = new ArrayList<>();
+        int novoValor = 1;
+
+        while (true) {
+            if (listaNumeros.size() >= 10) {
+                for (int i = 0; i < listaNumeros.size(); i++) {
+                    int valorAtual = listaNumeros.get(i);
+                    if (valorAtual <= 0) {
+                        novaListaNumeros.add(novoValor);
+                    } else {
+                        novaListaNumeros.add(valorAtual);
+                    }
+                }
+
+                System.out.println("Valor total de números já atingidos!");
+                for (int i = 0; i < novaListaNumeros.size(); i++) {
+                    System.out.println("X[" + i + "] = " + novaListaNumeros.get(i));
+                }
+                System.out.println("Encerrando a aplicação...");
+                break; 
+            } else {
+                System.out.println("\nDigite um valor: ");
+                int valor = sc.nextInt();
+
+                if (valor < 0) {
+                    listaNumeros.add(novoValor);
+                } else {
+                    listaNumeros.add(valor);
+                }
+            }
+        }
+
+        sc.close(); 
+    }
+}
